@@ -79,12 +79,13 @@ public class JsonReader {
     }
 
     // Function to check that a String has >= 20 words
-    public static boolean wordCountCheck(String list)  throws UndersizeException{
-        return list.length() >= 20;
+    public static /*boolean*/void wordCountCheck(String list)  throws UndersizeException{
+        //return list.length() >= 20;
+        if (list.length() < 20) throw new UndersizeException();
     }
 
-    // Function to check that a String has >= 20 words
-    public static boolean balanceCheck(String list)  throws UnbalancedException{
+    // Function to check that a String has at least 20% 9-or-more-letters-words
+    public static /*boolean*/void balanceCheck(String list)  throws UnbalancedException{
         String[] list2 = list.split("\\s+");
 
         int all = list2.length;
@@ -98,9 +99,8 @@ public class JsonReader {
 
         float avg = (float) count / (float) all;
 
-        //if avg < 0.2 throw UnbalancedException;
-        //else
-        return avg >= 0.2;
+        if (avg > 0.2) throw new UnbalancedException();
+        //return avg >= 0.2;
     }
 
     // Function to remove special characters from a String
@@ -139,10 +139,15 @@ public class JsonReader {
         String[] wordsNew = lol.split("\\s+");
         String lol2 = removeLessThan6(wordsNew);
 
+        balanceCheck(lol2);
+        wordCountCheck(lol2);
+
+        /*
         if (wordCountCheck(lol2) && balanceCheck(lol2))
             System.out.println(lol2);
         else
             System.out.println("Not good enough, try another OL");
+         */
         return lol2;
     }
 

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public  class Main {
 
-    public static void main(String[] args) throws IOException, JSONException, InvalidCountException, InvalidRangeException, UndersizeException, UnbalancedException {
+    public static void main(String[] args) throws IOException, JSONException, InvalidCountException, InvalidRangeException, UnbalancedException, UndersizeException {
 
         Game.Start();
 
