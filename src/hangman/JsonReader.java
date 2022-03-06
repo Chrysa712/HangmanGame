@@ -77,6 +77,17 @@ public class JsonReader {
 
         return str;
     }
+    // Function to check that every word has >= 6 letters
+    public static void lessThan6Check(String list)  throws InvalidRangeException{
+        //return list.length() >= 20;
+        LinkedHashSet<String> lhSetWords = new LinkedHashSet<String>( Arrays.asList(list) );
+        StringBuilder sbTemp = new StringBuilder();
+        int index = 0;
+        for(String s : lhSetWords){
+            if(index > 0 && s.length() < 6) throw  new InvalidRangeException();
+            index++;
+        }
+    }
 
     // Function to check that a String has >= 20 words
     public static /*boolean*/void wordCountCheck(String list)  throws UndersizeException{

@@ -70,6 +70,7 @@ public class Game {
         System.out.println("Provide the Dictionary ID");
         Scanner s = new Scanner(System.in);
         String dictID = s.nextLine();
+        //try {
         if (!HandleFiles.FileExists(dictID)) {
             HandleFiles.CreateFile(dictID);
             System.out.println("Provide the OL ID");
@@ -79,6 +80,10 @@ public class Game {
             HandleFiles.RemoveBlankLine(dictID);
         }
         return HandleFiles.ReadFile(dictID);
+       // }
+        //catch (UnbalancedException e){ HandleFiles.DeleteFile(dictID);}
+        //catch (UndersizeException o){HandleFiles.DeleteFile(dictID);}
+        //return HandleFiles.ReadFile(dictID);
     }
 
     public static HashMap<Character, Float> sortByValue(HashMap<Character, Float> hm){
@@ -103,7 +108,15 @@ public class Game {
         return temp;
     }
 
-    public static void startGame(final InputStream input, final OutputStream output, String[] WORDS) { //}public void exec() {
+    public static void startGame(final InputStream input, final OutputStream output, String[] WORDS) throws InvalidRangeException { //}public void exec() {
+
+//        try{
+//            JsonReader.lessThan6Check(String.valueOf(WORDS));
+//        }catch (InvalidRangeException e){
+//            System.out.println("The dict must be deleted");
+//        }
+
+        if (WORDS[0]=="") throw new InvalidRangeException();
 
         String word = WORDS[new Random().nextInt(WORDS.length)];
         boolean[] visible = new boolean[word.length()];
