@@ -13,7 +13,7 @@ public class HandleFiles {
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
-                System.out.println("File already exists.");
+                System.out.println("File overwritten.");
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -57,10 +57,7 @@ public class HandleFiles {
 
     public static void WriteFile(String ID, String data) {
         try {
-            //FileWriter myWriter = new FileWriter("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab\\hangman_DICTIONARΥ-" + ID +".txt");
             FileWriter myWriter = new FileWriter("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
-            //myWriter.write("Files in Java might be tricky, but it is fun enough!");
-            //myWriter.close();
             data = data.replaceAll("\\s+",System.getProperty("line.separator"));
             myWriter.write(data);
             myWriter.close();
@@ -72,26 +69,20 @@ public class HandleFiles {
     }
 
 
-    public static String[] ReadFile(String ID) {
+    public static String[] ReadFile(String ID) throws FileNotFoundException{
         String[] res = new String[0];
-        try {
-            StringBuilder res2 = new StringBuilder();
-            //File myObj = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
-            File myObj = new File("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                res2.append(data);
-                res2.append(" ");
-                //System.out.println(data);
-            }
-            myReader.close();
-            res = res2.toString().split("\\s+");
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+        //try {
+        StringBuilder res2 = new StringBuilder();
+        File myObj = new File("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
+        Scanner myReader = new Scanner(myObj);
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            res2.append(data);
+            res2.append(" ");
         }
-        //System.out.println(res);
+        myReader.close();
+        res = res2.toString().split("\\s+");
+
         return res;
     }
 
@@ -104,6 +95,7 @@ public class HandleFiles {
             System.out.println("Failed to delete the file.");
         }
     }
+
     public static boolean FileExists(String ID) {
         //File file = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
         File file = new File("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");

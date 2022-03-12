@@ -54,6 +54,20 @@ public class JsonReader {
         return str;
     }
 
+    public static void duplicatesCheck(String[] list)  throws InvalidCountException{
+        int all = list.length;
+        boolean duplicatesExist = false;
+        for (int i = 0; i < list.length; i++) {
+            for (int j = i + 1 ; j < list.length; j++) {
+                if (list[i].equals(list[j])) {
+                    duplicatesExist = true;
+                    break;
+                }
+            }
+        }
+        if (duplicatesExist) throw new InvalidCountException();
+    }
+
     // Function to remove words with less than 6 letters from a String[]
     public static String removeLessThan6(String[] list)  throws InvalidRangeException{
 
@@ -77,40 +91,39 @@ public class JsonReader {
 
         return str;
     }
+
     // Function to check that every word has >= 6 letters
-    public static void lessThan6Check(String list)  throws InvalidRangeException{
-        //return list.length() >= 20;
-        LinkedHashSet<String> lhSetWords = new LinkedHashSet<String>( Arrays.asList(list) );
-        StringBuilder sbTemp = new StringBuilder();
-        int index = 0;
-        for(String s : lhSetWords){
-            if(index > 0 && s.length() < 6) throw  new InvalidRangeException();
-            index++;
-        }
-    }
-
-    // Function to check that a String has >= 20 words
-    public static /*boolean*/void wordCountCheck(String list)  throws UndersizeException{
-        //return list.length() >= 20;
-        if (list.length() < 20) throw new UndersizeException();
-    }
-
-    // Function to check that a String has at least 20% 9-or-more-letters-words
-    public static /*boolean*/void balanceCheck(String list)  throws UnbalancedException{
-        String[] list2 = list.split("\\s+");
-
-        int all = list2.length;
-        int count = 0;
-        for(String s : list2){
-
-            if(s.length() >= 9) {
-                count++;
+    public static void lessThan6Check(String[] list)  throws InvalidRangeException{
+        int all = list.length;
+        boolean lessThan6 = false;
+        for(String s : list){
+            if(s.length() < 6) {
+                lessThan6 = true;
+                break;
             }
         }
 
+        if (lessThan6) throw new InvalidRangeException();
+    }
+
+    // Function to check that a String has >= 20 words
+    public static void wordCountCheck(String[] list)  throws UndersizeException{
+        //return list.length() >= 20;
+        if (list.length < 20) throw new UndersizeException();
+    }
+
+
+    // Function to check that a String has at least 20% 9-or-more-letters-words
+    public static void balanceCheck(String[] list)  throws UnbalancedException{
+
+        int all = list.length;
+        int count = 0;
+        for(String s : list){
+            if(s.length() >= 9) count++;
+        }
         float avg = (float) count / (float) all;
 
-        if (avg > 0.2) throw new UnbalancedException();
+        if (avg < 0.2) throw new UnbalancedException();
         //return avg >= 0.2;
     }
 
@@ -123,6 +136,7 @@ public class JsonReader {
         str = str.replace("-","");
         str = str.replace("_","");
         str = str.replace(";","");
+        str = str.replace("?","");
         str = str.replace("/","");
         str = str.replace("*","");
         str = str.replace("]","");
@@ -136,7 +150,7 @@ public class JsonReader {
         return str;
     }
 
-    public static String createWordsOfDict(String ol) throws IOException, InvalidCountException, InvalidRangeException, UndersizeException, UnbalancedException {
+    public static String createWordsOfDict(String ol) throws IOException, InvalidCountException, InvalidRangeException, UndersizeException, UnbalancedException, UnbalancedException {
         //OL453936W   OL27448W
         String urlstring = "https://openlibrary.org/works/"+ ol + ".json";
         JSONObject json = readJsonFromUrl(urlstring);
@@ -149,16 +163,11 @@ public class JsonReader {
         String lol = removeDuplicates(words);
         String[] wordsNew = lol.split("\\s+");
         String lol2 = removeLessThan6(wordsNew);
+        String[] wordsNew2 = lol2.split("\\s+");
 
-        balanceCheck(lol2);
-        wordCountCheck(lol2);
+        wordCountCheck(wordsNew2);
+        balanceCheck(wordsNew2);
 
-        /*
-        if (wordCountCheck(lol2) && balanceCheck(lol2))
-            System.out.println(lol2);
-        else
-            System.out.println("Not good enough, try another OL");
-         */
         return lol2;
     }
 
