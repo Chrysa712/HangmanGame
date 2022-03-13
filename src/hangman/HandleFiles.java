@@ -1,10 +1,19 @@
 package hangman;
 
+/**
+ * This is a class used to handle the dictionary files of the hangman game.
+ * @author Chrysa Rizeakou
+ */
+
 import java.io.*;
 import java.util.Scanner;
 
 public class HandleFiles {
 
+    /**
+     * Creates the dictionary file hangman_DICTIONARY-XXX.txt
+     * @param ID The XXX part of the dictionary's name.
+     */
     public static void CreateFile (String ID) {
         try {
 
@@ -21,7 +30,10 @@ public class HandleFiles {
         }
     }
 
-    // Function to remove blank lines from a file
+    /**
+     * Removes blank lines from a hangman_DICTIONARY-XXX.txt file
+     * @param ID The XXX part of the dictionary's name.
+     */
     public static void RemoveBlankLine(String ID){
         try{
             //File myObj = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
@@ -54,6 +66,11 @@ public class HandleFiles {
         }
     }
 
+    /**
+     * Writes to a hangman_DICTIONARY-XXX.txt file
+     * @param ID The XXX part of the dictionary's name.
+     * @param data The data written to the file.
+     */
     public static void WriteFile(String ID, String data) {
         try {
             FileWriter myWriter = new FileWriter("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
@@ -67,6 +84,12 @@ public class HandleFiles {
         }
     }
 
+    /**
+     * Gets the dictionary's words. Dictionary is a file named hangman_DICTIONARY-XXX.txt
+     * @param ID The XXX part of the dictionary's name.
+     * @return A String[] containing the dictionary's words.
+     * @throws FileNotFoundException
+     */
     public static String[] ReadFile(String ID) throws FileNotFoundException{
         String[] res = new String[0];
         //try {
@@ -84,6 +107,10 @@ public class HandleFiles {
         return res;
     }
 
+    /**
+     * Deletes a dictionary. Dictionary is a file named hangman_DICTIONARY-XXX.txt
+     * @param ID The XXX part of the dictionary's name.
+     */
     public static void DeleteFile(String ID) {
         //File myObj = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
         File myObj = new File("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
@@ -94,6 +121,11 @@ public class HandleFiles {
         }
     }
 
+    /**
+     * Checks if a dictionary named hangman_DICTIONARY-XXX.txt exists
+     * @param ID The XXX part of the dictionary's name.
+     * @return True if that dictionary exists. False if not.
+     */
     public static boolean FileExists(String ID) {
         //File file = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
         File file = new File("medialab\\hangman_DICTIONARΥ-" + ID + ".txt");
