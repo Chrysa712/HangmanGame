@@ -21,6 +21,7 @@ import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+//import JsonReader.*;
 
 
 public class GameController implements Initializable {
@@ -34,7 +35,7 @@ public class GameController implements Initializable {
     private  int hits = 0;
     private  int attempts = 0;
     private  String letNposSuggested="";
-    //private  boolean done = true;
+    private  boolean pressedSolution = false;
     private Image image = new Image("medialab/images/hangman0.png");
     //---
     //private String dictDetails;
@@ -197,6 +198,7 @@ public class GameController implements Initializable {
         imgLabel.setImage(image);
         oneRound += "Selected word: "+word+" - #Mistakes = "+mistakes+" - Winner: Computer";
         fixQueue(RoundInfo, oneRound);
+        pressedSolution = true;
     }
 
     @FXML
@@ -218,6 +220,7 @@ public class GameController implements Initializable {
         points = 0;
         attempts = 0;
         hitPositions = new int[0];
+        pressedSolution = false;
         //RoundInfo = new PriorityQueue<>();
         RoundInfo = new LinkedList<>();
 
@@ -237,6 +240,7 @@ public class GameController implements Initializable {
         points = 0;
         attempts = 0;
         letNposSuggested = "";
+        pressedSolution = false;
         //done = true;
         image = new Image("medialab/images/hangman0.png");
         oneRound = "";
@@ -446,6 +450,7 @@ public class GameController implements Initializable {
 
         float probabilityHelpForPoints;
         try {
+            if (pressedSolution) throw new IllegalArgumentException();
             boolean done = true;
 
             char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
