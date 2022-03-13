@@ -22,7 +22,6 @@ public class HandleFiles {
     }
 
     // Function to remove blank lines from a file
-    // NOT WORKING YET
     public static void RemoveBlankLine(String ID){
         try{
             //File myObj = new File("C:\\Users\\chriz\\Desktop\\multimedia_project2021-2022\\medialab","hangman_DICTIONARΥ-" + ID +".txt");
@@ -67,7 +66,6 @@ public class HandleFiles {
             e.printStackTrace();
         }
     }
-
 
     public static String[] ReadFile(String ID) throws FileNotFoundException{
         String[] res = new String[0];
