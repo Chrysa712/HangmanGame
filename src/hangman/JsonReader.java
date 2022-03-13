@@ -112,7 +112,6 @@ public class JsonReader {
         if (list.length < 20) throw new UndersizeException();
     }
 
-
     // Function to check that a String has at least 20% 9-or-more-letters-words
     public static void balanceCheck(String[] list)  throws UnbalancedException{
 
