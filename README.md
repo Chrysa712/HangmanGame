@@ -52,3 +52,5 @@ details by clicking on the menu item "Dictionary" from menu "Details".
 ![img_10.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_10.png)  ![img_11.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_11.png)  ![img_12.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_12.png)
 
 Player can exit the game at any time from the menu "Application" by clicking on the "Exit" menu item.
+
+![img_13.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_13.png)
