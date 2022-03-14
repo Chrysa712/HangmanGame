@@ -13,7 +13,7 @@ folder and loaded so the user can start a game.
 
 ![img_1.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_1.png)  
 
-If the "medialab" folder already contains dictionaries (in this Github repository are provided 6 valid dictionarys with IDs from '01'-'06' and 
+If the "medialab" folder already contains dictionaries (in this Github repository are provided 6 valid dictionarys with IDs from '00'-'06' and 
 some not valid for testing purposes), the user can load them, without having to create them. In order to load a dictionary choose the menu item 
 "Load" and provide a dictionary-ID. If something  goes wrong, error messages (Ubalanced, Ubdersized, InvalidRange, InvalidCount) will be displayed 
 and after closing that tab, if no valid input is given, the application will terminate. If everything is ok, a dictionary will be loaded so the 
@@ -52,3 +52,6 @@ details by clicking on the menu item "Dictionary" from menu "Details".
 ![img_10.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_10.png)  ![img_11.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_11.png)  ![img_12.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_12.png)
 
 Player can exit the game at any time from the menu "Application" by clicking on the "Exit" menu item.
+
+
+![img_13.png](https://github.com/Chrysa712/HangmanGame/blob/master/medialab/images/README_images/img_13.png)
